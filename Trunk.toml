@@ -1,2 +1,9 @@
+[build]
+filehash = false
+release = true
+public_url = "/yew_test_repo/"
+
+
+
 [[proxy]]
 backend = "https://yew.rs/tutorial/"
