@@ -42,6 +42,20 @@ jobs:
         uses: jetli/trunk-action@v0.1.0
         with:
           version: 'latest'
+          
+      - name: Cache Rust dependencies
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-rust-deps
+        with:
+          path: target
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
